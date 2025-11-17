@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels"
+import { SectionDataTable } from "../components/section-data-table"
 import { SectionTitle } from "../components/section-title"
 import { Sidebar } from "../components/sidebar"
+import { CodeBlock } from "../components/ui/code-block"
 import { WebhookDetailHeader } from "../components/webhook-detail-header"
 
 export const Route = createFileRoute("/")({
@@ -32,6 +34,22 @@ function Index() {
               <div className="space-y-6 p-6">
                 <div className="space-y-4">
                   <SectionTitle>Request Overview</SectionTitle>
+                  <SectionDataTable data={overviewData} />
+                </div>
+
+                <div className="space-y-4">
+                  <SectionTitle>Query Parameters</SectionTitle>
+                  <SectionDataTable data={overviewData} />
+                </div>
+
+                <div className="space-y-4">
+                  <SectionTitle>Headers</SectionTitle>
+                  <SectionDataTable data={overviewData} />
+                </div>
+
+                <div className="space-y-4">
+                  <SectionTitle>Request body</SectionTitle>
+                  <CodeBlock code={JSON.stringify(overviewData, null, 2)} />
                 </div>
               </div>
             </div>
